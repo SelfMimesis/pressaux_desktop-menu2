@@ -92,30 +92,32 @@
       </aside>
     </section>
 
-    <nav class="bottom-tabs" aria-label="Menu inferior">
-      <button class="bottom-tab home-button" id="homeButton">HOME</button>
-      <button class="bottom-tab hud-tab" data-panel="FREECOMMERCE">FREECOMMERCE</button>
-      <button class="bottom-tab hud-tab" data-panel="APARTMENT A9">APARTMENT A9</button>
-      <button class="bottom-tab hud-tab" data-panel="DATA STREAM">DATA STREAM</button>
-      <button class="bottom-tab hud-tab" data-panel="ENERGY SYSTEM">ENERGY SYSTEM</button>
-      <button class="bottom-tab hud-tab" data-panel="MARKET FLOW">MARKET FLOW</button>
-    </nav>
+    <section class="bottom-hud" aria-label="Menu inferior y estado del sistema">
+      <nav class="bottom-tabs" aria-label="Menu inferior">
+        <button class="bottom-tab home-button" id="homeButton">HOME</button>
+        <button class="bottom-tab hud-tab" data-panel="FREECOMMERCE">FREECOMMERCE</button>
+        <button class="bottom-tab hud-tab" data-panel="APARTMENT A9">APARTMENT A9</button>
+        <button class="bottom-tab hud-tab" data-panel="DATA STREAM">DATA STREAM</button>
+        <button class="bottom-tab hud-tab" data-panel="ENERGY SYSTEM">ENERGY SYSTEM</button>
+        <button class="bottom-tab hud-tab" data-panel="MARKET FLOW">MARKET FLOW</button>
+      </nav>
 
-    <aside class="status-widget" aria-label="Estado del sistema">
-      <div class="status-rings" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <strong>86%</strong>
-      </div>
+      <aside class="status-widget" aria-label="Estado del sistema">
+        <div class="status-rings" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <strong>86%</strong>
+        </div>
 
-      <div class="status-readout">
-        <p>ONLINE</p>
-        <span>ENERGY 86%</span>
-        <span>SIGNAL 97%</span>
-      </div>
+        <div class="status-readout">
+          <p>ONLINE</p>
+          <span>ENERGY 86%</span>
+          <span>SIGNAL 97%</span>
+        </div>
 
-      <img class="status-logo" src="assets/logo/pressaux-logo.png" alt="PRESAUX">
-    </aside>
+        <img class="status-logo" src="assets/logo/pressaux-logo.png" alt="PRESAUX">
+      </aside>
+    </section>
 
     <div class="notification-stack" id="notificationStack" aria-live="polite"></div>
     <div class="top-mini-popups" id="topMiniPopups" aria-live="polite"></div>

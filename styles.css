@@ -590,25 +590,71 @@ button {
   font-size: 6px;
 }
 
+.bottom-hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 14;
+  height: 190px;
+  pointer-events: none;
+}
+
+.bottom-hud::before,
+.bottom-hud::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(132, 181, 139, 0.72), rgba(50, 92, 76, 0.92)),
+    radial-gradient(circle at 78% 30%, rgba(235, 248, 214, 0.18), transparent 34%);
+  box-shadow:
+    inset 0 0 28px rgba(234, 255, 216, 0.18),
+    0 -8px 28px rgba(12, 37, 44, 0.2);
+  backdrop-filter: blur(18px);
+}
+
+.bottom-hud::before {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 92px;
+  border-top: 1px solid rgba(235, 248, 214, 0.34);
+  border-radius: 0;
+}
+
+.bottom-hud::after {
+  right: 0;
+  bottom: 0;
+  width: 340px;
+  height: 188px;
+  border-top: 1px solid rgba(235, 248, 214, 0.36);
+  border-left: 1px solid rgba(235, 248, 214, 0.36);
+  border-radius: 50px 0 0 0;
+}
+
 .bottom-tabs {
   position: absolute;
   left: 20px;
   bottom: 18px;
-  z-index: 12;
+  z-index: 2;
   display: flex;
   gap: 10px;
-  max-width: calc(100% - 410px);
+  max-width: calc(100% - 390px);
+  pointer-events: auto;
 }
 
 .bottom-tab {
   min-width: 136px;
   height: 36px;
   padding: 0 12px;
-  border: 1px solid rgba(69, 111, 84, 0.38);
-  border-radius: 20px;
+  border: 1px solid rgba(69, 111, 84, 0.52);
+  border-radius: 24px;
   color: #244c54;
   background: linear-gradient(180deg, #f0e8c7, #d7d6ad);
-  box-shadow: inset 0 0 10px rgba(255, 255, 236, 0.45), 0 0 8px rgba(23, 55, 46, 0.2);
+  box-shadow:
+    inset 0 0 11px rgba(255, 255, 236, 0.52),
+    0 2px 8px rgba(23, 55, 46, 0.22);
   font-size: clamp(7px, 0.76vw, 11px);
 }
 
@@ -634,23 +680,22 @@ button {
 
 .status-widget {
   position: absolute;
-  right: -7px;
-  bottom: -7px;
-  z-index: 14;
-  width: 345px;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 340px;
   height: 188px;
   display: grid;
   grid-template-columns: 64px 1fr 76px;
   align-items: center;
   gap: 14px;
   padding: 38px 30px 28px 36px;
-  border: 1px solid rgba(235, 248, 214, 0.34);
-  border-right: 0;
-  border-bottom: 0;
-  border-radius: 44px 0 0 0;
-  background: linear-gradient(135deg, rgba(145, 191, 131, 0.64), rgba(52, 95, 80, 0.9));
-  box-shadow: inset 0 0 24px rgba(234, 255, 216, 0.2), 0 0 18px rgba(21, 51, 45, 0.3);
-  backdrop-filter: blur(18px);
+  border: 0;
+  border-radius: 50px 0 0 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  pointer-events: auto;
 }
 
 .status-rings {
@@ -1307,6 +1352,7 @@ button {
 
   .top-hud,
   .screen-grid,
+  .bottom-hud,
   .bottom-tabs,
   .status-widget {
     position: relative;
@@ -1351,10 +1397,27 @@ button {
     min-height: 440px;
   }
 
+  .bottom-hud {
+    height: auto;
+    padding: 18px 14px 0;
+  }
+
+  .bottom-hud::before {
+    inset: 0;
+    height: auto;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .bottom-hud::after {
+    display: none;
+  }
+
   .bottom-tabs {
     flex-wrap: wrap;
     max-width: none;
-    padding: 18px 14px 0;
+    padding: 0;
+    left: auto;
+    bottom: auto;
   }
 
   .bottom-tab {
@@ -1363,7 +1426,10 @@ button {
 
   .status-widget {
     margin-left: auto;
+    margin-top: 16px;
     width: min(100%, 360px);
+    background: linear-gradient(135deg, rgba(145, 191, 131, 0.36), rgba(52, 95, 80, 0.62));
+    border-radius: 34px 0 0 0;
   }
 
   .notification-stack {

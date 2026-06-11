@@ -9,192 +9,144 @@ const modules = [
   "Network Pulse"
 ];
 
+const homeCopy = [
+  "T?NF UFDJFC/JD C?LL?II, LCNT?C?TN?RA UFC?JCF /F LCC D?VCCC?LT?C?F. CF?NF?LVD FRD, D?VCCC?TEDN V?FNAL T?NF CV?LLF?GT",
+  "TLLC?TLL?J?T UFC?VFR?T, D?C?VFR?TT?J?T UFHCJTM V?T?RL",
+  "TCTJDF FL?LJ?T?J?T CF?T?J?D D?FLL?FCT?J?T /F",
+  "TR?T?JC?T!! UFC?LL?N, C?J?LLC?V?LC FCC?J?T?J?J?T, L?N",
+  "JD??CT?J?T, ?NFLL?J?T ?L C?DT? CL?F?JC?T?J!! F?NT?T?N",
+  "JTN?CLT?F J?T?T?J?T?FL?F?N, CF?TC?R?T UF?CL?TJ?T",
+  "TCT?JC?J?!! L?T? TLC?TJ?FR?T?L?J?R UFC?LL?N, T?ND?T?JC?LC.",
+  "TCLL?F?CL?T?J?T T?LJ CF?T UFC?VFR?T?R FL?C LCC",
+  "CLL?J?C?TJ?J?S, TCL?J?F?N, ?RC R??HDC?JT?J?T UF?CLL?J?D",
+  "T?NF C?J!! LCC CF?F, UF?T?F?D T?F T?D?D T?NF ?F UFDJFC.",
+  "D?VCCC?LT?J?D FL?TJ?C?J?T, TL?NF CF?T TLL?TVFFFR?TCR C?J?T",
+  "D?LL?V?TT J?C TLC?J?LL?J?T TLL?FT?CT?D FRT?LC?J?TR",
+  "V?T?RL J?T?LL?F?C?T?L TLL?JT?J?T L?N D?V?L?F!! D?L?FFC?T?Y,",
+  "LCC CLL?J?FN UFC?J?T FCC?J?TJ?TR J?C CL?F?D?R UFC?LL?N,",
+  "C?J?CV?JT?C?JT?N, ?F?CVL?T?J!! C?TJ, L?N /C?HL?T?J?T?C",
+  "CFRT L?T?L?CT?N FC?L C?D?LC L?T?J?J?N, L?N C?F?ND?V?L?C",
+  "T?NF?VC?T, F?VLT?FL UFC?D?RM?T?J?T?N, L?CC CF",
+  "J?N?VR F?CC?J?D UFDJFC /F D?VCCC?F?T?L H?J?R?C?R L?N B?J?T??",
+  "N?T?F?T?J?LT?R C?C?F?N UFC?LL?R?D J? T?F CL?F?D?T?J?T LCC"
+];
+
 const moduleData = {
   "FreeCommerce": {
-    alias: "FREECOMMERCE",
-    subtitle: "Commerce exchange node",
+    action: "INITIALIZE TRADE",
+    subtitle: "Market data / exchange flow",
     readout: "FREECOMMERCE",
     copy: [
-      "Vendor gate rerouted through domestic exchange.",
-      "Soft goods queue accepted by Apartment A9 mesh.",
-      "Commerce packet bridge is ready for local market flow."
+      "Live market data reroutes through FreeCommerce exchange nodes.",
+      "Animated trading lines show bid, ask and transfer pressure.",
+      "Commercial nodes are validating flow across Apartment A9."
     ],
-    blocks: [
-      ["VENDOR", "ONLINE"],
-      ["TOKEN", "VALID"],
-      ["QUEUE", "SOFT"],
-      ["INDEX", "74"]
-    ],
-    fields: [
-      ["Node", "FreeCommerce"],
-      ["Vendor Gate", "Domestic mesh"],
-      ["Packet Queue", "Soft goods"],
-      ["Token State", "Verified"]
-    ]
+    blocks: [["INDEX", "+4.28"], ["TRADE", "LIVE"], ["NODES", "12"], ["FLOW", "91"]],
+    fields: [["Market Index", "+4.28"], ["Exchange Flow", "91%"], ["Commercial Nodes", "12 active"], ["Trade Status", "Ready"]],
+    visual: "trade"
   },
   "Apartment A9": {
-    alias: "APARTMENT A9",
-    subtitle: "Private habitat channel",
+    action: "SYNC HABITAT",
+    subtitle: "Habitat state / interior environment",
     readout: "APARTMENT A9",
     copy: [
-      "Habitat layer synchronized with resident channel.",
-      "Interior glass bus keeps a low-noise comfort pulse.",
-      "Access vectors remain private to Apartment A9."
+      "Apartment A9 habitat map is staged in glass-outline mode.",
+      "Temperature, access, energy and ambient fields are synchronized.",
+      "The house plan is adapted into the local HUD palette."
     ],
-    blocks: [
-      ["HABITAT", "A9"],
-      ["COMFORT", "21.8"],
-      ["ACCESS", "PRIVATE"],
-      ["AIR", "88"]
-    ],
-    fields: [
-      ["Habitat", "Apartment A9"],
-      ["Resident Link", "Online"],
-      ["Comfort Layer", "21.8 C"],
-      ["Access Mode", "Private"]
-    ]
+    blocks: [["TEMP", "21.8"], ["ACCESS", "LOCK"], ["ENERGY", "86%"], ["AMBIENT", "SOFT"]],
+    fields: [["Temperature", "21.8 C"], ["Access", "Private lock"], ["Energy", "86%"], ["Ambient", "Low-noise"]],
+    visual: "apartment"
   },
   "Data Stream": {
-    alias: "DATA STREAM",
-    subtitle: "Vertical glass bus",
+    action: "SCAN STREAM",
+    subtitle: "False code / flow graph",
     readout: "DATA STREAM",
     copy: [
-      "Vertical columns are indexing transparent data bands.",
-      "RX and TX pulses are balanced across the center bus.",
-      "Stream fragments are filtered before task dispatch."
+      "False code lines cascade through the vertical data buffer.",
+      "Stream graphs are scanning for signal drift and packet noise.",
+      "Column layers react to the current code density."
     ],
-    blocks: [
-      ["RX", "92"],
-      ["TX", "86"],
-      ["FILTER", "ON"],
-      ["DRIFT", "00"]
-    ],
-    fields: [
-      ["Stream", "Column relay"],
-      ["RX", "92"],
-      ["TX", "86"],
-      ["Noise Filter", "Enabled"]
-    ]
+    blocks: [["RX", "92"], ["TX", "86"], ["SCAN", "ON"], ["DRIFT", "00"]],
+    fields: [["Code Buffer", "Active"], ["Flow Graph", "Scrolling"], ["Packet Drift", "00"], ["Scanner", "Enabled"]],
+    visual: "stream"
   },
   "Energy System": {
-    alias: "ENERGY",
-    subtitle: "Auxiliary power cell",
+    action: "BALANCE CORE",
+    subtitle: "Core percentage / stability / load",
     readout: "ENERGY SYSTEM",
     copy: [
-      "Auxiliary cells are stabilized in the green band.",
-      "Thermal draw remains below alert threshold.",
-      "Signal layer receives a steady power handshake."
+      "Energy core rotates between translucent capacitor layers.",
+      "Power draw remains stable while consumption is balanced.",
+      "Auxiliary glow is locked to the green operational band."
     ],
-    blocks: [
-      ["ENERGY", "86%"],
-      ["LOAD", "12.4"],
-      ["CELL", "STABLE"],
-      ["HEAT", "COOL"]
-    ],
-    fields: [
-      ["Energy", "86%"],
-      ["Aux Load", "12.4 KW"],
-      ["Thermal", "Cool"],
-      ["Cell State", "Stable"]
-    ]
+    blocks: [["CORE", "86%"], ["STABLE", "99"], ["LOAD", "12.4"], ["HEAT", "COOL"]],
+    fields: [["Core Power", "86%"], ["Stability", "99%"], ["Consumption", "12.4 KW"], ["Thermal", "Cool"]],
+    visual: "energy"
   },
   "Market Flow": {
-    alias: "MARKET FLOW",
-    subtitle: "Live market pulse",
+    action: "OPEN MARKET",
+    subtitle: "Buy / sell routes and fluctuations",
     readout: "MARKET FLOW",
     copy: [
-      "Market pulse received from FreeCommerce exchange.",
-      "Offer count is open and prepared for local routing.",
-      "Bid and ask values are updating through the right panel."
+      "Buy and sell paths are drawn over the commerce routing layer.",
+      "Indices fluctuate in controlled neon pulses.",
+      "Market assets are ready for active exchange."
     ],
-    blocks: [
-      ["OPEN", "YES"],
-      ["ASK", "14"],
-      ["BID", "12"],
-      ["FLOW", "GREEN"]
-    ],
-    fields: [
-      ["Market", "Open"],
-      ["Offers", "14 active"],
-      ["Ask", "14"],
-      ["Bid", "12"]
-    ]
+    blocks: [["BUY", "7"], ["SELL", "5"], ["ASSETS", "28"], ["DELTA", "+1.8"]],
+    fields: [["Buy Routes", "7"], ["Sell Routes", "5"], ["Assets", "28"], ["Fluctuation", "+1.8"]],
+    visual: "market"
   },
   "Security Layer": {
-    alias: "SECURITY",
-    subtitle: "Encrypted perimeter",
+    action: "VERIFY ACCESS",
+    subtitle: "Authentication / encryption / biometric access",
     readout: "SECURITY LAYER",
     copy: [
-      "Perimeter channel verified by encrypted audit loop.",
-      "Threat map remains clear across all visible gates.",
-      "Apartment A9 lock state is armed and sealed."
+      "Authentication rings verify the fictive biometric imprint.",
+      "Encrypted access channels are sealed across the perimeter.",
+      "Security confirms a clean pass through the local gate."
     ],
-    blocks: [
-      ["LOCK", "ARMED"],
-      ["THREAT", "CLEAR"],
-      ["AUDIT", "LOOP"],
-      ["CAM", "08"]
-    ],
-    fields: [
-      ["Perimeter", "Closed"],
-      ["Threat Map", "Clear"],
-      ["Audit Trail", "Looping"],
-      ["Lock", "Armed"]
-    ]
+    blocks: [["AUTH", "PASS"], ["CRYPT", "ON"], ["BIO", "MATCH"], ["RISK", "00"]],
+    fields: [["Authentication", "Passed"], ["Encryption", "Active"], ["Biometric", "Fictive match"], ["Risk", "00"]],
+    visual: "security"
   },
   "Transport Node": {
-    alias: "TRANSPORT",
-    subtitle: "Route recalculation",
+    action: "CALCULATE ROUTE",
+    subtitle: "Urban routes / autonomous vehicles / ETA",
     readout: "TRANSPORT NODE",
     copy: [
-      "Transport route recalculated for vertical dock three.",
-      "Lift corridor is reserved for market ring transfer.",
-      "Route nodes are waiting for the next resident signal."
+      "Urban route lines recalculate across the transport node.",
+      "Autonomous vehicle traces move through dock corridors.",
+      "Estimated arrival is refreshed in the right task layer."
     ],
-    blocks: [
-      ["DOCK", "03"],
-      ["ETA", "01:20"],
-      ["LANE", "READY"],
-      ["ROUTE", "MKT"]
-    ],
-    fields: [
-      ["Dock", "Vertical three"],
-      ["ETA", "01:20"],
-      ["Lane", "03"],
-      ["Route", "Market ring"]
-    ]
+    blocks: [["ROUTE", "03"], ["AUTO", "4"], ["ETA", "01:20"], ["DOCK", "READY"]],
+    fields: [["Urban Route", "Dock 03"], ["Autonomous Vehicles", "4"], ["ETA", "01:20"], ["Dock State", "Ready"]],
+    visual: "transport"
   },
   "Network Pulse": {
-    alias: "NETWORK",
-    subtitle: "Private signal field",
+    action: "REFRESH PULSE",
+    subtitle: "Signal / nodes / latency / distributed connection",
     readout: "NETWORK PULSE",
     copy: [
-      "Private channel is online with low signal latency.",
-      "Pulse packets are balanced between center layers.",
-      "Network rim rotation is synced to glass bus phase."
+      "Distributed nodes are pulsing through the private signal field.",
+      "Latency is low and connection bands remain balanced.",
+      "Network echoes are mapped through the translucent grid."
     ],
-    blocks: [
-      ["SIGNAL", "97%"],
-      ["LAT", "11"],
-      ["VPN", "ON"],
-      ["PING", "LOW"]
-    ],
-    fields: [
-      ["Network", "Online"],
-      ["Latency", "11 MS"],
-      ["Signal", "97%"],
-      ["Channel", "Private"]
-    ]
+    blocks: [["SIGNAL", "97%"], ["NODES", "18"], ["LAT", "11"], ["MESH", "ON"]],
+    fields: [["Signal", "97%"], ["Nodes", "18"], ["Latency", "11 MS"], ["Distributed Mesh", "Online"]],
+    visual: "network"
   }
 };
 
-const automaticPopupMessages = [
+const miniMessages = [
   "Apartment A9 sync complete",
   "FreeCommerce node updated",
   "Energy layer stabilized",
   "Market pulse received",
   "Security channel verified",
-  "Transport route recalculated"
+  "Transport route recalculated",
+  "Network pulse refreshed",
+  "Data stream scan complete"
 ];
 
 const panelAliases = {
@@ -204,11 +156,18 @@ const panelAliases = {
   "APARTMENT A9": "Apartment A9",
   FREECOMMERCE: "FreeCommerce",
   SECURITY: "Security Layer",
+  "SECURITY LAYER": "Security Layer",
   "DATA STREAM": "Data Stream",
+  ENERGY: "Energy System",
   "ENERGY SYSTEM": "Energy System",
-  "MARKET FLOW": "Market Flow"
+  "MARKET FLOW": "Market Flow",
+  TRANSPORT: "Transport Node",
+  "TRANSPORT NODE": "Transport Node",
+  NETWORK: "Network Pulse",
+  "NETWORK PULSE": "Network Pulse"
 };
 
+const matrixChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ/?<>[]{}+=-_:;".split("");
 const futureDevice = document.querySelector(".future-device");
 const popup = document.getElementById("futurePopup");
 const popupCard = popup?.querySelector(".popup-card");
@@ -217,22 +176,25 @@ const popupTitle = document.getElementById("popupTitle");
 const popupSubtitle = document.getElementById("popupSubtitle");
 const popupFields = document.getElementById("popupFields");
 const popupAction = document.getElementById("popupAction");
-const notificationStack = document.getElementById("notificationStack");
+const popupVisualStage = document.getElementById("popupVisualStage");
 const taskList = document.getElementById("taskList");
 const taskCount = document.getElementById("taskCount");
 const moduleBlockGrid = document.getElementById("moduleBlockGrid");
 const technicalCopy = document.querySelector(".technical-copy");
 const leftTitle = document.querySelector(".left-data-panel h1");
+const leftKicker = document.querySelector(".left-data-panel header p");
 const visualReadoutLabel = document.querySelector(".visual-readout p");
 const visualReadoutTitle = document.querySelector(".visual-readout strong");
+const topMiniPopups = document.getElementById("topMiniPopups");
+const homeButton = document.getElementById("homeButton");
 
-let notificationIndex = 0;
-let activeModule = "FreeCommerce";
+let activeModule = "";
+let miniIndex = 0;
+let miniTimer = 0;
 let parallaxX = 0;
 let parallaxY = 0;
 let targetParallaxX = 0;
 let targetParallaxY = 0;
-let popupTimer = 0;
 let swipeStartX = 0;
 let swipeStartY = 0;
 let swipeCurrentX = 0;
@@ -241,8 +203,7 @@ let isDraggingPopup = false;
 function normalizeModule(name) {
   const rawName = String(name || "").trim();
   const upperName = rawName.toUpperCase();
-  const moduleMatch = modules.find((moduleName) => moduleName.toLowerCase() === rawName.toLowerCase());
-
+  const moduleMatch = Object.keys(moduleData).find((moduleName) => moduleName.toLowerCase() === rawName.toLowerCase());
   return panelAliases[rawName] || panelAliases[upperName] || moduleMatch || "FreeCommerce";
 }
 
@@ -250,25 +211,74 @@ function getModule(name) {
   return moduleData[normalizeModule(name)] || moduleData.FreeCommerce;
 }
 
+function matrixText(element, finalText, duration = 760) {
+  if (!element) return;
+
+  const text = String(finalText);
+  const start = performance.now();
+  const length = text.length;
+
+  function frame(now) {
+    const progress = Math.min(1, (now - start) / duration);
+    const reveal = Math.floor(progress * length);
+    let output = "";
+
+    for (let index = 0; index < length; index += 1) {
+      if (index < reveal || text[index] === " ") {
+        output += text[index];
+      } else {
+        output += matrixChars[Math.floor(Math.random() * matrixChars.length)];
+      }
+    }
+
+    element.textContent = output;
+
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      element.textContent = text;
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+function matrixValue(input, finalValue, duration = 720) {
+  if (!input) return;
+  const text = String(finalValue);
+  const start = performance.now();
+
+  function frame(now) {
+    const progress = Math.min(1, (now - start) / duration);
+    const reveal = Math.floor(progress * text.length);
+    input.value = text.split("").map((char, index) => {
+      if (index < reveal || char === " ") return char;
+      return matrixChars[Math.floor(Math.random() * matrixChars.length)];
+    }).join("");
+
+    if (progress < 1) requestAnimationFrame(frame);
+    else input.value = text;
+  }
+
+  requestAnimationFrame(frame);
+}
+
 function buildTaskList() {
   if (!taskList) return;
 
-  taskList.innerHTML = modules.map((moduleName, index) => `
-    <article class="task-item${index === 0 ? " is-hot" : ""}" data-module="${moduleName}">
+  taskList.innerHTML = modules.map((moduleName) => `
+    <article class="task-item" data-module="${moduleName}">
       <strong>${moduleName}</strong>
       <span>INFO</span>
     </article>
   `).join("");
 
-  if (taskCount) {
-    taskCount.textContent = String(modules.length).padStart(2, "0");
-  }
+  if (taskCount) taskCount.textContent = String(modules.length).padStart(2, "0");
 }
 
 function setActiveButtons(moduleName) {
   document.querySelectorAll("[data-panel]").forEach((button) => {
-    const buttonModule = normalizeModule(button.dataset.panel);
-    button.classList.toggle("is-active", buttonModule === moduleName);
+    button.classList.toggle("is-active", normalizeModule(button.dataset.panel) === moduleName);
   });
 
   document.querySelectorAll(".task-item").forEach((item) => {
@@ -276,65 +286,114 @@ function setActiveButtons(moduleName) {
   });
 }
 
-function renderModuleBlocks(moduleName) {
-  const data = getModule(moduleName);
+function createBlocks(data) {
   if (!moduleBlockGrid) return;
-
   moduleBlockGrid.innerHTML = data.blocks.map(([label, value], index) => `
-    <article class="module-block" style="--delay: ${index * 70}ms">
+    <article class="module-block" style="--delay: ${index * 80}ms">
       <span>${label}</span>
       <strong>${value}</strong>
     </article>
   `).join("");
+
+  moduleBlockGrid.querySelectorAll("span").forEach((el, index) => matrixText(el, data.blocks[index][0], 520));
+  moduleBlockGrid.querySelectorAll("strong").forEach((el, index) => matrixText(el, data.blocks[index][1], 640));
 }
 
-function renderModuleText(moduleName) {
-  const data = getModule(moduleName);
-
-  if (leftTitle) {
-    leftTitle.textContent = `${data.alias} PROTOCOL`;
-  }
-
-  if (technicalCopy) {
-    technicalCopy.innerHTML = data.copy.concat([
-      "Glass HUD layers are recalibrating around the active module.",
-      "Dynamic blocks are staged in the central viewport for operator review.",
-      "The rotating rim graphic simulates mechanical phase alignment."
-    ]).map((line) => `<p>${line}</p>`).join("");
-  }
-
-  if (visualReadoutLabel) {
-    visualReadoutLabel.textContent = `${data.alias} / ACTIVE LAYER`;
-  }
-
-  if (visualReadoutTitle) {
-    visualReadoutTitle.textContent = data.readout;
-  }
+function setCopy(lines) {
+  if (!technicalCopy) return;
+  technicalCopy.innerHTML = lines.map(() => "<p></p>").join("");
+  technicalCopy.querySelectorAll("p").forEach((paragraph, index) => {
+    matrixText(paragraph, lines[index], 900 + index * 35);
+  });
 }
 
-function selectModule(moduleName) {
-  activeModule = normalizeModule(moduleName);
-  setActiveButtons(activeModule);
-  renderModuleText(activeModule);
-  renderModuleBlocks(activeModule);
+function resetHome() {
+  activeModule = "";
+  futureDevice.classList.add("home-state");
+  futureDevice.classList.remove("module-state");
+  closePopup();
+  setActiveButtons("");
+  if (leftKicker) matrixText(leftKicker, "NODE REPORT / A9", 640);
+  if (leftTitle) matrixText(leftTitle, "FREECOMMERCE PROTOCOL", 780);
+  setCopy(homeCopy);
+  if (visualReadoutLabel) visualReadoutLabel.textContent = "";
+  if (visualReadoutTitle) visualReadoutTitle.textContent = "";
+  if (moduleBlockGrid) moduleBlockGrid.innerHTML = "";
 }
 
-function renderPopup(moduleName, message) {
-  const data = getModule(moduleName);
+function renderModuleScreen(moduleName) {
+  const normalized = normalizeModule(moduleName);
+  const data = getModule(normalized);
+  activeModule = normalized;
 
-  popupTitle.textContent = message || data.readout;
-  popupSubtitle.textContent = data.subtitle;
-  popupFields.innerHTML = data.fields.map(([label, value], index) => `
+  futureDevice.classList.remove("home-state");
+  futureDevice.classList.add("module-state");
+  setActiveButtons(normalized);
+  if (leftKicker) matrixText(leftKicker, `${data.readout} / LIVE`, 640);
+  if (leftTitle) matrixText(leftTitle, `${data.readout} PROTOCOL`, 780);
+  setCopy(data.copy.concat([
+    "Additional visual blocks are loaded only after interface selection.",
+    "Matrix text transition confirms the active system layer."
+  ]));
+  if (visualReadoutLabel) matrixText(visualReadoutLabel, `${data.readout} / ACTIVE MODULE`, 640);
+  if (visualReadoutTitle) matrixText(visualReadoutTitle, data.readout, 860);
+  createBlocks(data);
+}
+
+function popupVisual(type) {
+  const visuals = {
+    trade: `
+      <svg class="trade-graph" viewBox="0 0 260 150" aria-hidden="true">
+        <polyline points="8,112 34,96 58,104 82,63 108,78 132,42 160,58 190,26 224,44 252,18"></polyline>
+        <g class="graph-bars">
+          <rect x="20" y="106" width="10" height="30"></rect><rect x="54" y="92" width="10" height="44"></rect>
+          <rect x="88" y="70" width="10" height="66"></rect><rect x="122" y="82" width="10" height="54"></rect>
+          <rect x="156" y="52" width="10" height="84"></rect><rect x="190" y="62" width="10" height="74"></rect>
+          <rect x="224" y="38" width="10" height="98"></rect>
+        </g>
+      </svg>`,
+    apartment: `
+      <svg class="apartment-plan" viewBox="0 0 260 180" aria-hidden="true">
+        <path d="M45 74 L82 38 L123 52 L148 84 L190 70 L212 126 L160 142 L122 132 L95 160 L62 130 Z"></path>
+        <path d="M95 76 L132 76 L154 102 L132 128 L96 128 L74 102 Z"></path>
+        <path d="M160 90 L232 112 L216 164 L148 140 Z"></path>
+        <path d="M166 108 L218 124 M158 124 L210 142 M154 138 L202 156"></path>
+        <text x="164" y="36">A9</text>
+      </svg>`,
+    stream: `<div class="code-stream">${Array.from({ length: 10 }, (_, i) => `<span style="--i:${i}">0x${(4417 + i * 37).toString(16)} / STREAM_PACKET_${i}</span>`).join("")}</div>`,
+    energy: `<div class="energy-core"><span></span><span></span><span></span><strong>86%</strong></div>`,
+    market: `<div class="route-map"><span></span><span></span><span></span><i></i><i></i><i></i><i></i></div>`,
+    security: `<div class="bio-scan"><span></span><span></span><span></span><strong>PASS</strong></div>`,
+    transport: `<div class="transport-map"><span></span><span></span><span></span><i></i><i></i><i></i></div>`,
+    network: `<div class="network-nodes"><span></span><span></span><span></span><span></span><span></span><i></i><i></i><i></i></div>`
+  };
+
+  return visuals[type] || visuals.stream;
+}
+
+function renderPopup(moduleName) {
+  const normalized = normalizeModule(moduleName);
+  const data = getModule(normalized);
+
+  popupTitle.textContent = "";
+  popupSubtitle.textContent = "";
+  popupFields.innerHTML = data.fields.map(([label], index) => `
     <div class="popup-field">
       <label for="popup-field-${index}">${label}</label>
-      <input id="popup-field-${index}" value="${value}" aria-label="${label}" readonly>
+      <input id="popup-field-${index}" value="" aria-label="${label}" readonly>
     </div>
   `).join("");
+  popupAction.textContent = data.action;
+  popupVisualStage.innerHTML = popupVisual(data.visual);
+
+  matrixText(popupTitle, data.readout, 820);
+  matrixText(popupSubtitle, data.subtitle, 700);
+  popupFields.querySelectorAll("label").forEach((label, index) => matrixText(label, data.fields[index][0], 540));
+  popupFields.querySelectorAll("input").forEach((input, index) => matrixValue(input, data.fields[index][1], 720));
 }
 
-function openPopup(moduleName, message) {
-  const normalizedModule = normalizeModule(moduleName);
-  renderPopup(normalizedModule, message);
+function openPopup(moduleName) {
+  renderPopup(moduleName);
   popup.classList.remove("is-dismissing");
   popup.classList.add("is-open");
   popup.setAttribute("aria-hidden", "false");
@@ -343,11 +402,8 @@ function openPopup(moduleName, message) {
 function closePopup() {
   popup.classList.remove("is-open", "is-dismissing", "is-dragging");
   popup.setAttribute("aria-hidden", "true");
-
-  if (popupCard) {
-    popupCard.style.removeProperty("--drag-x");
-    popupCard.style.removeProperty("--drag-opacity");
-  }
+  popupCard?.style.removeProperty("--drag-x");
+  popupCard?.style.removeProperty("--drag-opacity");
 }
 
 function dismissPopupToRight() {
@@ -358,63 +414,54 @@ function dismissPopupToRight() {
   window.setTimeout(closePopup, 420);
 }
 
-function scheduleRandomPopup() {
-  window.clearTimeout(popupTimer);
-  const delay = 6500 + Math.random() * 6500;
-
-  popupTimer = window.setTimeout(() => {
-    if (!popup.classList.contains("is-open")) {
-      const moduleName = modules[Math.floor(Math.random() * modules.length)];
-      const message = automaticPopupMessages[notificationIndex % automaticPopupMessages.length];
-      openPopup(moduleName, message);
-      notificationIndex += 1;
-    }
-    scheduleRandomPopup();
-  }, delay);
+function selectModule(moduleName) {
+  const normalized = normalizeModule(moduleName);
+  renderModuleScreen(normalized);
+  openPopup(normalized);
 }
 
-function showNotification(message) {
-  const toast = document.createElement("article");
-  toast.className = "toast";
-  toast.innerHTML = `<strong>SYSTEM NOTICE</strong><span>${message}</span>`;
+function showMiniPopup(message) {
+  if (!topMiniPopups) return;
 
-  notificationStack.prepend(toast);
+  const note = document.createElement("article");
+  note.className = "mini-popup";
+  note.innerHTML = `<strong></strong><span></span>`;
+  topMiniPopups.prepend(note);
+  matrixText(note.querySelector("strong"), "A9 NOTICE", 420);
+  matrixText(note.querySelector("span"), message, 680);
 
-  while (notificationStack.children.length > 4) {
-    notificationStack.lastElementChild.remove();
+  while (topMiniPopups.children.length > 2) {
+    topMiniPopups.lastElementChild.remove();
   }
 
   window.setTimeout(() => {
-    toast.classList.add("is-leaving");
-    toast.addEventListener("animationend", () => toast.remove(), { once: true });
-  }, 4200);
+    note.classList.add("is-leaving");
+    note.addEventListener("animationend", () => note.remove(), { once: true });
+  }, 5200);
 }
 
-function loopNotifications() {
-  showNotification(automaticPopupMessages[notificationIndex % automaticPopupMessages.length]);
-  notificationIndex += 1;
+function scheduleMiniPopups() {
+  window.clearTimeout(miniTimer);
+  const delay = 3000 + Math.random() * 57000;
+  miniTimer = window.setTimeout(() => {
+    showMiniPopup(miniMessages[miniIndex % miniMessages.length]);
+    miniIndex += 1;
+    scheduleMiniPopups();
+  }, delay);
 }
 
 function handlePointerMove(event) {
   if (!futureDevice || window.matchMedia("(pointer: coarse)").matches) return;
-
   const rect = futureDevice.getBoundingClientRect();
-  const x = (event.clientX - rect.left) / rect.width - 0.5;
-  const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-  targetParallaxX = x * 24;
-  targetParallaxY = y * 18;
+  targetParallaxX = ((event.clientX - rect.left) / rect.width - 0.5) * 24;
+  targetParallaxY = ((event.clientY - rect.top) / rect.height - 0.5) * 18;
 }
 
 function animateParallax() {
   parallaxX += (targetParallaxX - parallaxX) * 0.08;
   parallaxY += (targetParallaxY - parallaxY) * 0.08;
-
-  if (futureDevice) {
-    futureDevice.style.setProperty("--parallax-x", `${parallaxX.toFixed(2)}px`);
-    futureDevice.style.setProperty("--parallax-y", `${parallaxY.toFixed(2)}px`);
-  }
-
+  futureDevice?.style.setProperty("--parallax-x", `${parallaxX.toFixed(2)}px`);
+  futureDevice?.style.setProperty("--parallax-y", `${parallaxY.toFixed(2)}px`);
   requestAnimationFrame(animateParallax);
 }
 
@@ -426,7 +473,6 @@ function requestFullscreenOnce() {
 
 function startPopupDrag(event) {
   if (!popup.classList.contains("is-open")) return;
-
   isDraggingPopup = true;
   swipeStartX = event.clientX;
   swipeStartY = event.clientY;
@@ -437,30 +483,22 @@ function startPopupDrag(event) {
 
 function movePopupDrag(event) {
   if (!isDraggingPopup || !popupCard) return;
-
   const deltaX = Math.max(0, event.clientX - swipeStartX);
   const deltaY = Math.abs(event.clientY - swipeStartY);
   swipeCurrentX = deltaX;
-
-  if (deltaX > 4 && deltaX > deltaY * 0.7) {
-    event.preventDefault();
-  }
-
+  if (deltaX > 4 && deltaX > deltaY * 0.7) event.preventDefault();
   popupCard.style.setProperty("--drag-x", `${deltaX}px`);
   popupCard.style.setProperty("--drag-opacity", `${Math.max(0.18, 1 - deltaX / 360)}`);
 }
 
 function endPopupDrag(event) {
   if (!isDraggingPopup) return;
-
   popupCard?.releasePointerCapture?.(event.pointerId);
   isDraggingPopup = false;
-
   if (swipeCurrentX > 130) {
     dismissPopupToRight();
     return;
   }
-
   popup.classList.remove("is-dragging");
   popupCard?.style.removeProperty("--drag-x");
   popupCard?.style.removeProperty("--drag-opacity");
@@ -470,29 +508,21 @@ function bindEvents() {
   document.addEventListener("pointerdown", requestFullscreenOnce);
 
   document.querySelectorAll("[data-panel]").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectModule(button.dataset.panel);
-    });
+    button.addEventListener("click", () => selectModule(button.dataset.panel));
   });
+
+  homeButton?.addEventListener("click", resetHome);
 
   taskList?.addEventListener("click", (event) => {
     const item = event.target.closest(".task-item");
-    if (item) {
-      selectModule(item.dataset.module);
-    }
+    if (item) selectModule(item.dataset.module);
   });
 
   popupClose.addEventListener("click", closePopup);
-
   popup.addEventListener("click", (event) => {
-    if (event.target === popup) {
-      closePopup();
-    }
+    if (event.target === popup) closePopup();
   });
-
-  popupAction.addEventListener("click", () => {
-    closePopup();
-  });
+  popupAction.addEventListener("click", closePopup);
 
   popupCard?.addEventListener("pointerdown", startPopupDrag);
   popupCard?.addEventListener("pointermove", movePopupDrag);
@@ -500,9 +530,7 @@ function bindEvents() {
   popupCard?.addEventListener("pointercancel", endPopupDrag);
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closePopup();
-    }
+    if (event.key === "Escape") closePopup();
   });
 
   futureDevice?.addEventListener("pointermove", handlePointerMove);
@@ -515,18 +543,12 @@ function bindEvents() {
 function openInitialPanelFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const requestedPanel = params.get("panel") || decodeURIComponent(window.location.hash.replace("#", ""));
-
-  if (requestedPanel) {
-    selectModule(requestedPanel);
-  }
+  if (requestedPanel) selectModule(requestedPanel);
 }
 
 buildTaskList();
 bindEvents();
-selectModule(activeModule);
-loopNotifications();
+resetHome();
 openInitialPanelFromUrl();
 animateParallax();
-scheduleRandomPopup();
-
-window.setInterval(loopNotifications, 5600);
+scheduleMiniPopups();

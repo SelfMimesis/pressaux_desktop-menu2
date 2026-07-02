@@ -339,8 +339,9 @@ svg {
 
 .control-matrix {
   position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
+  flex: 0 1 auto;
+  height: clamp(300px, 34vw, 520px);
+  max-height: 52%;
   margin-top: clamp(4px, 0.4vw, 10px);
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1872,8 +1873,8 @@ svg {
   }
 
   .control-matrix {
-    bottom: 24px;
     height: 420px;
+    max-height: none;
   }
 
   .center-visual-panel {

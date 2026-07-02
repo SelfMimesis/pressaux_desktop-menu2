@@ -237,13 +237,69 @@ svg {
   backdrop-filter: blur(16px);
 }
 
+.circuit-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background:
+    linear-gradient(180deg, rgba(4, 18, 24, 0.12), rgba(4, 18, 24, 0.64)),
+    url('./assets/hotel/circuit-field.gif') center / 240px 240px repeat;
+  mix-blend-mode: screen;
+  filter: saturate(1.35) contrast(1.08);
+  animation: circuitDrift 18s linear infinite;
+}
+
+.circuit-layer::before,
+.circuit-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.circuit-layer::before {
+  opacity: 0.42;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 62px, rgba(51, 231, 255, 0.16) 63px 64px, transparent 65px 128px),
+    repeating-linear-gradient(0deg, transparent 0 42px, rgba(244, 237, 201, 0.08) 43px 44px, transparent 45px 92px);
+  animation: circuitScan 11s linear infinite;
+}
+
+.circuit-layer::after {
+  opacity: 0.3;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 0, 64, 0.22), transparent 18%),
+    radial-gradient(circle at 72% 34%, rgba(42, 255, 92, 0.18), transparent 20%),
+    radial-gradient(circle at 52% 76%, rgba(51, 88, 255, 0.2), transparent 22%);
+  animation: circuitPulse 5.8s ease-in-out infinite;
+}
+
+.left-data-panel > :not(.circuit-layer),
+.right-notification-panel > :not(.circuit-layer),
+.center-visual-panel > :not(.circuit-layer),
+.bottom-hud > :not(.circuit-layer) {
+  position: relative;
+}
+
 .left-data-panel {
+  position: relative;
   padding: clamp(26px, 2.4vw, 58px) clamp(18px, 1.9vw, 44px) clamp(18px, 1.6vw, 34px) clamp(18px, 1.5vw, 32px);
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(8, 70, 78, 0.7), rgba(16, 116, 111, 0.18)),
     radial-gradient(circle at 8% 14%, rgba(76, 8, 16, 0.32), transparent 34%),
     var(--glass);
+}
+
+.left-data-panel > :not(.circuit-layer) {
+  z-index: 2;
+}
+
+.circuit-layer-left {
+  opacity: 0.07;
+  background-size: 280px 280px;
 }
 
 .left-data-panel header {
@@ -366,6 +422,16 @@ svg {
     linear-gradient(90deg, rgba(5, 25, 34, 0.52), rgba(23, 126, 123, 0.2) 34%, rgba(244, 237, 201, 0.16)),
     repeating-linear-gradient(0deg, rgba(185, 255, 245, 0.12) 0 1px, transparent 1px 4px);
   box-shadow: inset 18px 0 34px rgba(2, 12, 18, 0.34), inset -26px 0 40px rgba(244, 237, 201, 0.1);
+}
+
+.center-visual-panel > :not(.circuit-layer) {
+  z-index: 2;
+}
+
+.circuit-layer-center {
+  opacity: 0.09;
+  background-size: 320px 320px;
+  animation-duration: 21s;
 }
 
 .center-visual-panel::before,
@@ -655,13 +721,14 @@ svg {
 
 .quick-actions {
   position: absolute;
-  left: 13%;
-  right: 13%;
-  bottom: 17%;
+  left: 0;
+  right: 0;
+  bottom: 22%;
   z-index: 7;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(7px, 0.85vw, 18px);
+  grid-template-columns: repeat(5, clamp(48px, 4.4vw, 78px));
+  justify-content: center;
+  gap: clamp(8px, 1vw, 20px);
 }
 
 .quick-action {
@@ -687,8 +754,8 @@ svg {
 }
 
 .quick-action svg {
-  width: 56%;
-  height: 56%;
+  width: 52%;
+  height: 52%;
   fill: none;
   stroke: currentColor;
   stroke-width: 4;
@@ -697,7 +764,7 @@ svg {
 }
 
 .quick-action span {
-  font-size: clamp(11px, 1.1vw, 24px);
+  font-size: clamp(10px, 0.9vw, 18px);
 }
 
 .quick-action:hover,
@@ -887,6 +954,16 @@ svg {
   box-shadow: inset 16px 0 28px rgba(1, 8, 12, 0.38);
 }
 
+.right-notification-panel > :not(.circuit-layer) {
+  z-index: 2;
+}
+
+.circuit-layer-right {
+  opacity: 0.07;
+  background-size: 210px 210px;
+  animation-duration: 15s;
+}
+
 .right-notification-panel header {
   display: flex;
   justify-content: space-between;
@@ -1021,15 +1098,24 @@ svg {
 
 .bottom-hud {
   position: absolute;
-  --status-width: clamp(300px, 25vw, 600px);
-  --status-height: clamp(168px, 18vw, 285px);
-  --dock-height: clamp(82px, 8.6vw, 150px);
+  --status-width: clamp(240px, 18vw, 430px);
+  --status-height: clamp(118px, 12vw, 190px);
+  --dock-height: clamp(76px, 7.4vw, 122px);
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 14;
   height: var(--status-height);
   pointer-events: none;
+}
+
+.circuit-layer-bottom {
+  inset: auto 0 0;
+  height: var(--dock-height);
+  z-index: 1;
+  opacity: 0.07;
+  background-size: 260px 260px;
+  animation-duration: 24s;
 }
 
 .bottom-hud::before,
@@ -1061,7 +1147,7 @@ svg {
   width: var(--status-width);
   height: var(--status-height);
   border-top: 1px solid rgba(235, 248, 214, 0.36);
-  border-radius: 54px 0 0 0;
+  border-radius: 34px 0 0 0;
 }
 
 .bottom-tabs {
@@ -1074,6 +1160,10 @@ svg {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: clamp(6px, 0.75vw, 16px);
   pointer-events: auto;
+}
+
+.bottom-hud .bottom-tabs {
+  position: absolute;
 }
 
 .bottom-tab {
@@ -1120,16 +1210,20 @@ svg {
   width: var(--status-width);
   height: var(--status-height);
   display: grid;
-  grid-template-columns: clamp(52px, 5vw, 88px) 1fr clamp(58px, 5.6vw, 128px);
+  grid-template-columns: clamp(38px, 3.3vw, 58px) 1fr clamp(42px, 3.8vw, 72px);
   align-items: center;
-  gap: clamp(8px, 1vw, 20px);
-  padding: clamp(30px, 3.2vw, 58px) clamp(22px, 2.4vw, 46px) clamp(24px, 2.5vw, 42px) clamp(28px, 3vw, 58px);
+  gap: clamp(6px, 0.7vw, 13px);
+  padding: clamp(20px, 2vw, 34px) clamp(16px, 1.6vw, 28px) clamp(16px, 1.6vw, 26px) clamp(20px, 1.9vw, 34px);
   pointer-events: auto;
+}
+
+.bottom-hud .status-widget {
+  position: absolute;
 }
 
 .status-rings {
   position: relative;
-  width: clamp(48px, 4.8vw, 84px);
+  width: clamp(36px, 3.4vw, 58px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -1145,26 +1239,26 @@ svg {
 }
 
 .status-rings span:nth-child(2) {
-  inset: 10px;
+  inset: clamp(6px, 0.55vw, 9px);
   animation-duration: 2.7s;
   animation-direction: reverse;
 }
 
 .status-rings strong {
   color: var(--cream);
-  font-size: clamp(10px, 0.65vw, 15px);
+  font-size: clamp(7px, 0.48vw, 10px);
 }
 
 .status-readout {
   display: grid;
-  gap: clamp(8px, 0.7vw, 13px);
+  gap: clamp(5px, 0.45vw, 8px);
 }
 
 .status-readout p,
 .status-readout span {
   margin: 0;
   color: rgba(250, 244, 194, 0.9);
-  font-size: clamp(7px, 0.82vw, 18px);
+  font-size: clamp(6px, 0.56vw, 11px);
   line-height: 1;
   white-space: nowrap;
 }
@@ -1175,8 +1269,8 @@ svg {
 }
 
 .status-logo {
-  width: clamp(66px, 6vw, 118px);
-  height: clamp(66px, 6vw, 118px);
+  width: clamp(44px, 3.9vw, 74px);
+  height: clamp(44px, 3.9vw, 74px);
   object-fit: contain;
   filter: drop-shadow(0 0 14px rgba(67, 232, 220, 0.5));
   animation: brandFloat 7s ease-in-out infinite reverse;
@@ -1573,6 +1667,22 @@ svg {
 @keyframes gridShift {
   from { background-position: 0 0, 0 0; }
   to { background-position: 0 44px, 132px 0; }
+}
+
+@keyframes circuitDrift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, 240px 240px; }
+}
+
+@keyframes circuitScan {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 128px 0, 0 92px; }
+}
+
+@keyframes circuitPulse {
+  0%, 100% { opacity: 0.2; filter: hue-rotate(0deg); }
+  45% { opacity: 0.36; filter: hue-rotate(24deg); }
+  68% { opacity: 0.28; filter: hue-rotate(-18deg); }
 }
 
 @keyframes brandFloat {

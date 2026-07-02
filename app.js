@@ -473,18 +473,22 @@ function selectModule(moduleName) {
 }
 
 function refreshMiniPopupLayer() {
-  const hasVisibleNotice = Boolean(topMiniPopups?.querySelector(".mini-popup"));
+  const activeNotice = topMiniPopups?.querySelector(".mini-popup");
+  const hasVisibleNotice = Boolean(activeNotice);
+  const isLargeNotice = Boolean(activeNotice?.classList.contains("is-large"));
   topMiniPopups?.classList.toggle("is-visible", hasVisibleNotice);
-  futureDevice?.classList.toggle("has-mini-popup", hasVisibleNotice);
+  topMiniPopups?.classList.toggle("is-compact", hasVisibleNotice && !isLargeNotice);
+  futureDevice?.classList.toggle("has-mini-popup", hasVisibleNotice && isLargeNotice);
 }
 
-function showMiniPopup(message) {
+function showMiniPopup(message, variant = "large") {
   if (!topMiniPopups) return;
 
   topMiniPopups.querySelectorAll(".mini-popup").forEach((popupItem) => popupItem.remove());
 
+  const isLargeNotice = variant === "large";
   const note = document.createElement("article");
-  note.className = "mini-popup";
+  note.className = `mini-popup ${isLargeNotice ? "is-large" : "is-small"}`;
   note.innerHTML = `
     <img class="mini-popup-logo" src="assets/hotel/hotel-logo-primary.png" alt="" aria-hidden="true">
     <div class="mini-popup-copy">
@@ -508,9 +512,10 @@ function showMiniPopup(message) {
 
 function scheduleMiniPopups(isInitial = false) {
   window.clearTimeout(miniTimer);
-  const delay = isInitial ? 900 : 1600 + Math.random() * 5200;
+  const delay = isInitial ? 900 : 6200;
   miniTimer = window.setTimeout(() => {
-    showMiniPopup(miniMessages[miniIndex % miniMessages.length]);
+    const variant = miniIndex % 2 === 0 ? "large" : "small";
+    showMiniPopup(miniMessages[miniIndex % miniMessages.length], variant);
     miniIndex += 1;
     scheduleMiniPopups();
   }, delay);

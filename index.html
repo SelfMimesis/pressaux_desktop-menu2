@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PressAux Hotel TranrollinHyfa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="future-device home-state" aria-label="Panel PressAux de habitacion futurista en TranrollinHyfa">
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="screen-sweep" aria-hidden="true"></div>
+
+    <header class="top-hud">
+      <div class="hotel-brand-lockup">
+        <img class="top-brand-logo" src="assets/hotel/hotel-logo-primary.png" alt="PressAux Hotel">
+        <p class="system-label">TRANROLLINHYFA / PRESSAUX ROOM DESKTOP</p>
+      </div>
+
+      <nav class="top-hud-tabs" aria-label="Pestanas superiores">
+        <button class="hud-tab" data-panel="LOBBY CHECK-IN">CHECK-IN</button>
+        <button class="hud-tab" data-panel="SUITES">SUITES</button>
+        <button class="hud-tab" data-panel="CONCIERGE">CONCIERGE</button>
+        <button class="hud-tab" data-panel="LOUNGE">LOUNGE</button>
+        <button class="hud-tab" data-panel="HOUSEKEEPING">ROOM SERVICE</button>
+        <button class="hud-tab" data-panel="ACCESS SECURITY">SECURITY</button>
+        <button class="hud-tab" data-panel="TRANSPORT">TRANSPORT</button>
+        <button class="hud-tab" data-panel="FACILITY AUDIT">FACILITY AUDIT</button>
+      </nav>
+    </header>
+
+    <section class="screen-grid" aria-label="Panel principal">
+      <article class="left-data-panel">
+        <header>
+          <p>TRANROLLINHYFA / ROOM CHECK-IN</p>
+          <h1>PRESSAUX FUTURE HOTEL</h1>
+        </header>
+
+        <div class="technical-copy">
+          <p>TranrollinHyfa room control receives PressAux arrival, suite climate and access pulses in a quiet hospitality mesh.</p>
+          <p>The chamber interface keeps lobby check-in, room service, concierge and security mapped into a single glass desktop.</p>
+          <p>Guest routing remains stable while the room console prepares temperature, lighting, privacy and staff relay presets.</p>
+        </div>
+
+        <section class="control-matrix" id="controlMatrix" aria-label="Matriz de habitacion"></section>
+      </article>
+
+      <section class="center-visual-panel" aria-label="Visualizacion central de habitacion">
+        <div class="circuit-layer circuit-layer-center" aria-hidden="true"></div>
+
+        <div class="vertical-layers" aria-hidden="true">
+          <span class="layer-column layer-1"></span>
+          <span class="layer-column layer-2"></span>
+          <span class="layer-column layer-3"></span>
+          <span class="layer-column layer-4"></span>
+          <span class="layer-column layer-5"></span>
+          <span class="layer-column layer-6"></span>
+        </div>
+
+        <img class="center-logo center-logo-cross" src="assets/hotel/hotel-logo-cross.png" alt="" aria-hidden="true">
+        <img class="center-logo center-logo-ghost" src="assets/hotel/hotel-logo-ghost.png" alt="" aria-hidden="true">
+
+        <div class="hotel-flow-field" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="top-mini-popups" id="topMiniPopups" aria-live="polite"></div>
+
+        <article class="room-console" aria-label="Consola de habitacion">
+          <button class="console-power room-action" type="button" data-room-mode="POWER" aria-label="Energia" title="Energia">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2v10"></path>
+              <path d="M7.2 5.8a8 8 0 1 0 9.6 0"></path>
+            </svg>
+          </button>
+
+          <div class="console-dial" aria-hidden="true">
+            <span class="dial-ring"></span>
+            <span class="dial-core"></span>
+            <span class="dial-readout">21</span>
+            <span class="dial-minus">-</span>
+            <span class="dial-plus">+</span>
+          </div>
+
+          <div class="console-side console-side-left" aria-hidden="true">
+            <span>-7S</span>
+            <span>72</span>
+            <span>IC4</span>
+          </div>
+
+          <div class="console-side console-side-right" aria-hidden="true">
+            <span>-7S</span>
+            <span>72</span>
+            <span>IC4</span>
+          </div>
+        </article>
+
+        <nav class="quick-actions" aria-label="Acciones rapidas de habitacion">
+          <button class="quick-action room-action" type="button" data-room-mode="RECEPTION" aria-label="Recepcion" title="Recepcion">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M17 42h30M22 42c0-12 5-20 10-20s10 8 10 20M32 15v7M25 49h14"></path>
+            </svg>
+          </button>
+          <button class="quick-action room-action" type="button" data-room-mode="SLEEP" aria-label="Descanso" title="Descanso">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M11 36c4-9 12-13 21-13 9 0 17 4 21 13M14 36c4 7 11 10 18 10s14-3 18-10"></path>
+            </svg>
+          </button>
+          <button class="quick-action quick-action-brand room-action is-active" type="button" data-room-mode="LOBBY" aria-label="Lobby" title="Lobby">
+            <span>PX</span>
+          </button>
+          <button class="quick-action room-action" type="button" data-room-mode="STAFF" aria-label="Staff" title="Staff">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="20" r="9"></circle>
+              <path d="M16 54c2-13 8-20 16-20s14 7 16 20M23 41l9 8 9-8"></path>
+            </svg>
+          </button>
+          <button class="quick-action room-action" type="button" data-room-mode="SERVICE" aria-label="Servicio" title="Servicio">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M13 16h7l5 25h23l5-18H24"></path>
+              <circle cx="29" cy="50" r="4"></circle>
+              <circle cx="46" cy="50" r="4"></circle>
+            </svg>
+          </button>
+        </nav>
+
+        <div class="rim-gear-system" aria-hidden="true">
+          <div class="rim-armature">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="rim-ring rim-ring-outer"></div>
+          <div class="rim-ring rim-ring-mid"></div>
+          <div class="rim-ring rim-ring-inner"></div>
+          <div class="rim-core">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="visual-readout">
+          <p>ROOM DESKTOP / ACTIVE</p>
+          <strong>LOBBY CHECK-IN</strong>
+        </div>
+
+        <div class="module-block-grid" id="moduleBlockGrid" aria-live="polite"></div>
+      </section>
+
+      <aside class="right-notification-panel">
+        <header>
+          <p>SUITE CARDS</p>
+          <span id="taskCount">00</span>
+        </header>
+
+        <div class="suite-ticket-grid" id="suiteTicketGrid" aria-label="Fichas compactas de estancia"></div>
+        <div class="task-list" id="taskList" aria-label="Modulos y notificaciones"></div>
+      </aside>
+    </section>
+
+    <section class="bottom-hud" aria-label="Menu inferior y estado del sistema">
+      <nav class="bottom-tabs" aria-label="Menu inferior">
+        <button class="bottom-tab home-button" id="homeButton">HOME</button>
+        <button class="bottom-tab hud-tab" data-panel="LOBBY CHECK-IN">CHECK-IN</button>
+        <button class="bottom-tab hud-tab" data-panel="SUITES">SUITES</button>
+        <button class="bottom-tab hud-tab" data-panel="CONCIERGE">CONCIERGE</button>
+        <button class="bottom-tab hud-tab" data-panel="LOUNGE">LOUNGE</button>
+        <button class="bottom-tab hud-tab" data-panel="HOUSEKEEPING">ROOM SERVICE</button>
+      </nav>
+
+      <aside class="status-widget" aria-label="Estado del sistema">
+        <div class="status-rings" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <strong>86%</strong>
+        </div>
+
+        <div class="status-readout">
+          <p>ONLINE</p>
+          <span>PRESSAUX 73%</span>
+          <span>HYFA FLOW 92%</span>
+        </div>
+
+        <img class="status-logo" src="assets/hotel/hotel-logo-primary.png" alt="PressAux Hotel">
+      </aside>
+    </section>
+
+    <div class="notification-stack" id="notificationStack" aria-live="polite"></div>
+
+    <section class="future-popup" id="futurePopup" aria-hidden="true">
+      <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <button class="popup-close" id="popupClose" aria-label="Cerrar"></button>
+
+        <div class="popup-content">
+          <p class="popup-subtitle" id="popupSubtitle">SYSTEM CHANNEL</p>
+          <h2 id="popupTitle">CORE</h2>
+
+          <div class="popup-fields" id="popupFields"></div>
+
+          <button class="popup-action" id="popupAction">EXECUTE</button>
+        </div>
+
+        <div class="popup-graphic" aria-label="Ondas verticales abstractas">
+          <div class="popup-visual-stage" id="popupVisualStage"></div>
+          <div class="wave-stack" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

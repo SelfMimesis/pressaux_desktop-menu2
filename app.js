@@ -273,7 +273,7 @@ function matrixValue(input, finalValue, duration = 720) {
 function buildControlMatrix() {
   if (!controlMatrix) return;
 
-  controlMatrix.innerHTML = matrixCells.map(([label, value], index) => `
+  controlMatrix.innerHTML = matrixCells.slice(0, 18).map(([label, value], index) => `
     <button class="control-cell room-action" type="button" data-room-mode="${label === "BELL" ? "RECEPTION" : label === "REST" ? "SLEEP" : label === "STAFF" ? "STAFF" : label === "CART" ? "SERVICE" : label === "LOBBY" ? "LOBBY" : `CELL_${index}`}" style="--delay:${index * 36}ms">
       <span>${label}</span>
       <strong>${value}</strong>
@@ -284,14 +284,16 @@ function buildControlMatrix() {
 function buildSuiteTickets() {
   if (!suiteTicketGrid) return;
 
-  suiteTicketGrid.innerHTML = suiteTickets.map(([label, value, moduleName], index) => `
+  const visibleSuiteTickets = suiteTickets.slice(0, 4);
+
+  suiteTicketGrid.innerHTML = visibleSuiteTickets.map(([label, value, moduleName], index) => `
     <button class="suite-ticket" type="button" data-panel="${moduleName}" style="--delay:${index * 70}ms">
       <header>
         <strong>${label}</strong>
         <span>${value}</span>
       </header>
       <div class="mini-ledger" aria-hidden="true">
-        ${Array.from({ length: 12 }, (_, cellIndex) => `<i class="${(cellIndex + index) % 5 === 0 ? "is-hot" : ""}">${matrixCells[(cellIndex + index) % matrixCells.length][1]}</i>`).join("")}
+        ${Array.from({ length: 8 }, (_, cellIndex) => `<i class="${(cellIndex + index) % 5 === 0 ? "is-hot" : ""}">${matrixCells[(cellIndex + index) % matrixCells.length][1]}</i>`).join("")}
       </div>
     </button>
   `).join("");
@@ -300,7 +302,7 @@ function buildSuiteTickets() {
 function buildTaskList() {
   if (!taskList) return;
 
-  taskList.innerHTML = homeTasks.map(([label, tag], index) => {
+  taskList.innerHTML = homeTasks.slice(0, 6).map(([label, tag], index) => {
     const moduleName = modules[index] || modules[0];
     return `
     <article class="task-item" data-module="${moduleName}">
@@ -310,7 +312,7 @@ function buildTaskList() {
     `;
   }).join("");
 
-  if (taskCount) taskCount.textContent = String(suiteTickets.length).padStart(2, "0");
+  if (taskCount) taskCount.textContent = String(Math.min(suiteTickets.length, 4)).padStart(2, "0");
 }
 
 function setActiveButtons(moduleName) {

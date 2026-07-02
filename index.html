@@ -31,8 +31,6 @@
 
     <section class="screen-grid" aria-label="Panel principal">
       <article class="left-data-panel">
-        <div class="circuit-layer circuit-layer-left" aria-hidden="true"></div>
-
         <header>
           <p>TRANROLLINHYFA / ROOM CHECK-IN</p>
           <h1>PRESSAUX FUTURE HOTEL</h1>
@@ -69,6 +67,8 @@
           <span></span>
           <span></span>
         </div>
+
+        <div class="top-mini-popups" id="topMiniPopups" aria-live="polite"></div>
 
         <article class="room-console" aria-label="Consola de habitacion">
           <button class="console-power room-action" type="button" data-room-mode="POWER" aria-label="Energia" title="Energia">
@@ -150,8 +150,6 @@
       </section>
 
       <aside class="right-notification-panel">
-        <div class="circuit-layer circuit-layer-right" aria-hidden="true"></div>
-
         <header>
           <p>SUITE CARDS</p>
           <span id="taskCount">00</span>
@@ -163,8 +161,6 @@
     </section>
 
     <section class="bottom-hud" aria-label="Menu inferior y estado del sistema">
-      <div class="circuit-layer circuit-layer-bottom" aria-hidden="true"></div>
-
       <nav class="bottom-tabs" aria-label="Menu inferior">
         <button class="bottom-tab home-button" id="homeButton">HOME</button>
         <button class="bottom-tab hud-tab" data-panel="LOBBY CHECK-IN">CHECK-IN</button>
@@ -192,7 +188,6 @@
     </section>
 
     <div class="notification-stack" id="notificationStack" aria-live="polite"></div>
-    <div class="top-mini-popups" id="topMiniPopups" aria-live="polite"></div>
 
     <section class="future-popup" id="futurePopup" aria-hidden="true">
       <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popupTitle">

@@ -277,7 +277,7 @@ svg {
 }
 
 .center-visual-panel > :not(.circuit-layer) {
-  position: relative;
+  z-index: 2;
 }
 
 .left-data-panel {

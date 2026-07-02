@@ -10,32 +10,47 @@ const modules = [
 ];
 
 const homeTasks = [
-  ["PressAux arrival lanes open", "PX"],
-  ["TranrollinHyfa suites synchronized", "THY"],
-  ["Creative facility requests circulating", "LAB"],
-  ["Observation lounge pulse active", "LNG"],
-  ["Crew service carts routed", "CRW"],
-  ["PressAux access verified", "SEC"],
-  ["Sky-dock transfer recalculated", "SKY"],
-  ["Facility audit channel warm", "AUD"]
+  ["Lobby lanes", "PX"],
+  ["Suite sync", "21C"],
+  ["Concierge", "CNC"],
+  ["Lounge", "LNG"],
+  ["Service", "SRV"],
+  ["Access", "SEC"],
+  ["Sky ETA", "ETA"],
+  ["Audit", "AUD"]
 ];
 
 const homeCopy = [
-  "The future hotel of TranrollinHyfa keeps PressAux reception, suite telemetry and team routing connected through a private operations layer.",
-  "The desktop receives arrival signals, room status, creative facility requests and sky-dock timing in one glass bus.",
-  "Front desk lanes are online. PressAux guest flow, encrypted passes and service queue updates are running in quiet scan mode.",
-  "Suites report balanced climate, locked doors, production-ready workspaces and nominal corridor pressure.",
-  "Central columns synchronize with the lobby desk, team roster grid and animated movement tabs.",
-  "Crew service maintains a rolling route with linen stock, technical amenities and studio-support checks below threshold.",
-  "Concierge channels listen for dining, luggage, equipment room access and observation lounge requests across the team mesh.",
-  "Security confirms encrypted PressAux access and keeps badge verification in passive observation mode.",
-  "Transport is prepared to calculate sky-bay timing, autonomous pickup windows and private transfer availability.",
-  "Facility audit stays warm in the background, ready to reconcile occupancy, folios and operational deltas.",
-  "All TranrollinHyfa hotel modules are available from the moving upper navigation and the lower operations dock.",
-  "Select a module to reveal its animated overlay, PressAux data blocks and capsule popup without breaking the lobby view.",
-  "The home state keeps the hotel alive with moving marks, scan columns and a live team service queue.",
-  "Returning home clears temporary drawings and restores the PressAux Hotel TranrollinHyfa desktop."
+  "TranrollinHyfa room control receives PressAux arrival and suite climate in a quiet mesh.",
+  "Lobby, service, concierge and access stay mapped into one glass desktop.",
+  "Room presets prepare temperature, lighting, privacy and staff relay.",
+  "Matrix, dial and compact cards stay separated inside the PressAux HUD."
 ];
+
+const matrixCells = [
+  ["TEMP", "21"], ["LIGHT", "74"], ["SHADE", "05"], ["AUDIO", "M2"], ["AIR", "9A"], ["LOCK", "OK"],
+  ["BELL", "PX"], ["REST", "R4"], ["STAFF", "03"], ["CART", "S1"], ["HYFA", "72"], ["GATE", "17"],
+  ["FOG", "00"], ["VIEW", "N"], ["BED", "Q2"], ["WATER", "68"], ["DESK", "ON"], ["GLASS", "C"],
+  ["DOCK", "04"], ["ETA", "1:20"], ["FOLIO", "18"], ["LOBBY", "LIVE"], ["MESH", "86"], ["AUDIT", "W"]
+];
+
+const suiteTickets = [
+  ["ARRIVAL", "PX/13", "Lobby Check-in"],
+  ["SUITE 21", "73%", "Suites"],
+  ["CARE", "06", "Concierge"],
+  ["LOUNGE", "COOL", "Lounge"],
+  ["SERVICE", "05", "Housekeeping"],
+  ["ACCESS", "PASS", "Access Security"]
+];
+
+const roomModes = {
+  POWER: "ROOM POWER LOOP STABLE",
+  RECEPTION: "RECEPTION REQUEST SENT",
+  LOBBY: "LOBBY CHECK-IN ACTIVE",
+  SLEEP: "SLEEP GLASS SET TO QUIET",
+  STAFF: "STAFF ROUTE OPEN",
+  SERVICE: "SERVICE CART RECALCULATED"
+};
 
 const moduleData = {
   "Lobby Check-in": {
@@ -43,8 +58,8 @@ const moduleData = {
     subtitle: "PressAux arrival / TranrollinHyfa lobby",
     readout: "PRESSAUX ARRIVAL",
     copy: [
-      "PressAux arrival lanes reroute through the illuminated TranrollinHyfa lobby desk.",
-      "Reservation pulses show team members, encrypted passes and suite release pressure.",
+      "Arrival lanes reroute through the illuminated lobby desk and room console.",
+      "Reservation pulses show guest passes, suite release pressure and private access states.",
       "Front desk nodes validate identity, folio status and modern facility assignment."
     ],
     blocks: [["TEAM", "18"], ["PASSES", "LIVE"], ["LANES", "04"], ["FLOW", "94"]],
@@ -53,24 +68,24 @@ const moduleData = {
   },
   "Suites": {
     action: "SYNC SUITES",
-    subtitle: "Team suites / climate / work pods",
+    subtitle: "Room climate / lighting / work pod",
     readout: "PRESSAUX SUITES",
     copy: [
-      "PressAux suite plans are staged in glass-outline mode.",
-      "Climate, access, minibar and work-pod readiness are synchronized.",
-      "Room maps are adapted into the TranrollinHyfa hotel palette."
+      "Suite tiles are staged in glass-outline mode.",
+      "Climate, access, lighting and work-pod readiness are synchronized.",
+      "Room maps stay inside the PressAux teal and cream hospitality band."
     ],
-    blocks: [["OPEN", "27"], ["TEAM", "73%"], ["READY", "14"], ["PODS", "03"]],
-    fields: [["Open Suites", "27"], ["PressAux Occupancy", "73%"], ["Arrival Ready", "14 rooms"], ["Work Pods", "03"]],
+    blocks: [["TEMP", "21C"], ["LIGHT", "74"], ["READY", "14"], ["PODS", "03"]],
+    fields: [["Room Temp", "21C"], ["Lighting", "74%"], ["Arrival Ready", "14 rooms"], ["Work Pods", "03"]],
     visual: "apartment"
   },
   "Concierge": {
     action: "ROUTE REQUESTS",
-    subtitle: "Dining / equipment / team care",
+    subtitle: "Dining / luggage / team care",
     readout: "TEAM CONCIERGE",
     copy: [
       "Concierge requests cascade through the PressAux service buffer.",
-      "Dining, luggage, equipment access and late checkout paths pulse across the team mesh.",
+      "Dining, luggage and late checkout paths pulse across the team mesh.",
       "Column layers react to request density and TranrollinHyfa route priority."
     ],
     blocks: [["DINING", "06"], ["GEAR", "04"], ["TEAM", "02"], ["CARE", "ON"]],
@@ -84,7 +99,7 @@ const moduleData = {
     copy: [
       "Observation lounge service rotates between bar, table and team comfort layers.",
       "Ambient load remains stable while the PressAux service cadence is balanced.",
-      "Auxiliary glow is locked to the cool cyan TranrollinHyfa hospitality band."
+      "Auxiliary glow is locked to the cool cyan TranrollinHyfa band."
     ],
     blocks: [["TABLES", "11"], ["BAR", "LIVE"], ["MOOD", "COOL"], ["CREW", "64"]],
     fields: [["Open Tables", "11"], ["Bar Status", "Live"], ["Ambient Mood", "Cool"], ["Team Load", "64%"]],
@@ -92,10 +107,10 @@ const moduleData = {
   },
   "Housekeeping": {
     action: "DISPATCH CARTS",
-    subtitle: "Suite turns / amenities / crew support",
-    readout: "CREW SERVICE",
+    subtitle: "Suite turns / amenities / service",
+    readout: "ROOM SERVICE",
     copy: [
-      "PressAux suite-turn paths are drawn over the service routing layer.",
+      "Suite-turn paths are drawn over the service routing layer.",
       "Linen, amenities and equipment-support checks fluctuate in controlled pulses.",
       "Crew service carts are ready for active dispatch across TranrollinHyfa."
     ],
@@ -105,10 +120,10 @@ const moduleData = {
   },
   "Access Security": {
     action: "VERIFY ACCESS",
-    subtitle: "PressAux passes / elevators / perimeter",
-    readout: "PRESSAUX SECURITY",
+    subtitle: "Room passes / elevators / perimeter",
+    readout: "ACCESS SECURITY",
     copy: [
-      "Authentication rings verify PressAux passes and staff badges.",
+      "Authentication rings verify guest passes and staff badges.",
       "Encrypted elevator channels are sealed across the TranrollinHyfa perimeter.",
       "Security confirms a clean pass through the modern lobby gate."
     ],
@@ -121,8 +136,8 @@ const moduleData = {
     subtitle: "Sky-dock / routes / ETA",
     readout: "SKY TRANSPORT",
     copy: [
-      "Sky-dock route lines recalculate across the TranrollinHyfa hotel transport node.",
-      "Vehicle traces move through arrivals, luggage and private team corridors.",
+      "Sky-dock route lines recalculate across the hotel transport node.",
+      "Vehicle traces move through arrivals, luggage and private corridors.",
       "Estimated arrival is refreshed in the right PressAux service queue."
     ],
     blocks: [["BAY", "03"], ["SKY", "04"], ["ETA", "01:20"], ["DOCK", "READY"]],
@@ -131,11 +146,11 @@ const moduleData = {
   },
   "Facility Audit": {
     action: "RECONCILE",
-    subtitle: "Team occupancy / folios / facility audit",
+    subtitle: "Occupancy / folios / facility audit",
     readout: "FACILITY AUDIT",
     copy: [
-      "Distributed PressAux folio nodes pulse through the private audit field.",
-      "Facility deltas are low and team occupancy bands remain balanced.",
+      "Distributed folio nodes pulse through the private audit field.",
+      "Facility deltas are low and occupancy bands remain balanced.",
       "TranrollinHyfa night echoes are mapped through the translucent hotel grid."
     ],
     blocks: [["TEAM", "73%"], ["FOLIO", "18"], ["DELTA", "02"], ["MESH", "ON"]],
@@ -143,19 +158,6 @@ const moduleData = {
     visual: "stream"
   }
 };
-
-const miniMessages = [
-  "PressAux team arrival confirmed in TranrollinHyfa",
-  "Modern suite wing synchronized for PressAux",
-  "Creative facility request routed to concierge",
-  "Observation lounge stabilized for team briefing",
-  "Crew service recalculated across hotel levels",
-  "PressAux access channel verified",
-  "Sky-dock transfer refreshed for the team",
-  "Facility audit scan complete in TranrollinHyfa",
-  "Private studio corridor unlocked for PressAux",
-  "Hospitality mesh adapting to team movement"
-];
 
 const panelAliases = {
   CORE: "Facility Audit",
@@ -172,7 +174,6 @@ const panelAliases = {
   SECURITY: "Access Security",
   "ACCESS SECURITY": "Access Security",
   TRANSPORT: "Transport",
-  "NIGHT AUDIT": "Facility Audit",
   "FACILITY AUDIT": "Facility Audit",
   AUDIT: "Facility Audit"
 };
@@ -197,24 +198,21 @@ const visualReadoutLabel = document.querySelector(".visual-readout p");
 const visualReadoutTitle = document.querySelector(".visual-readout strong");
 const topMiniPopups = document.getElementById("topMiniPopups");
 const homeButton = document.getElementById("homeButton");
+const controlMatrix = document.getElementById("controlMatrix");
+const suiteTicketGrid = document.getElementById("suiteTicketGrid");
 
 let activeModule = "";
+let activeRoomMode = "LOBBY";
 let miniIndex = 0;
 let miniTimer = 0;
 let parallaxX = 0;
 let parallaxY = 0;
 let targetParallaxX = 0;
 let targetParallaxY = 0;
-let swipeStartX = 0;
-let swipeStartY = 0;
-let swipeCurrentX = 0;
-let isDraggingPopup = false;
-let activePopupPointerId = null;
 let popupCloseFallback = 0;
-let popupCloseAnimationHandler = null;
-const FIRST_NOTICE_DELAY_MS = 900;
-const NOTICE_DELAY_MS = 6200;
-const LARGE_NOTICE_INTERVAL = 5;
+
+const FIRST_NOTICE_DELAY_MS = 1400;
+const NOTICE_DELAY_MS = 6800;
 
 function normalizeModule(name) {
   const rawName = String(name || "").trim();
@@ -240,20 +238,13 @@ function matrixText(element, finalText, duration = 760) {
     let output = "";
 
     for (let index = 0; index < length; index += 1) {
-      if (index < reveal || text[index] === " ") {
-        output += text[index];
-      } else {
-        output += matrixChars[Math.floor(Math.random() * matrixChars.length)];
-      }
+      if (index < reveal || text[index] === " ") output += text[index];
+      else output += matrixChars[Math.floor(Math.random() * matrixChars.length)];
     }
 
     element.textContent = output;
-
-    if (progress < 1) {
-      requestAnimationFrame(frame);
-    } else {
-      element.textContent = text;
-    }
+    if (progress < 1) requestAnimationFrame(frame);
+    else element.textContent = text;
   }
 
   requestAnimationFrame(frame);
@@ -279,6 +270,33 @@ function matrixValue(input, finalValue, duration = 720) {
   requestAnimationFrame(frame);
 }
 
+function buildControlMatrix() {
+  if (!controlMatrix) return;
+
+  controlMatrix.innerHTML = matrixCells.map(([label, value], index) => `
+    <button class="control-cell room-action" type="button" data-room-mode="${label === "BELL" ? "RECEPTION" : label === "REST" ? "SLEEP" : label === "STAFF" ? "STAFF" : label === "CART" ? "SERVICE" : label === "LOBBY" ? "LOBBY" : `CELL_${index}`}" style="--delay:${index * 36}ms">
+      <span>${label}</span>
+      <strong>${value}</strong>
+    </button>
+  `).join("");
+}
+
+function buildSuiteTickets() {
+  if (!suiteTicketGrid) return;
+
+  suiteTicketGrid.innerHTML = suiteTickets.map(([label, value, moduleName], index) => `
+    <button class="suite-ticket" type="button" data-panel="${moduleName}" style="--delay:${index * 70}ms">
+      <header>
+        <strong>${label}</strong>
+        <span>${value}</span>
+      </header>
+      <div class="mini-ledger" aria-hidden="true">
+        ${Array.from({ length: 12 }, (_, cellIndex) => `<i class="${(cellIndex + index) % 5 === 0 ? "is-hot" : ""}">${matrixCells[(cellIndex + index) % matrixCells.length][1]}</i>`).join("")}
+      </div>
+    </button>
+  `).join("");
+}
+
 function buildTaskList() {
   if (!taskList) return;
 
@@ -292,7 +310,7 @@ function buildTaskList() {
     `;
   }).join("");
 
-  if (taskCount) taskCount.textContent = String(modules.length).padStart(2, "0");
+  if (taskCount) taskCount.textContent = String(suiteTickets.length).padStart(2, "0");
 }
 
 function setActiveButtons(moduleName) {
@@ -303,6 +321,16 @@ function setActiveButtons(moduleName) {
   document.querySelectorAll(".task-item").forEach((item) => {
     item.classList.toggle("is-hot", item.dataset.module === moduleName);
   });
+}
+
+function setActiveRoomMode(mode) {
+  activeRoomMode = mode;
+  document.querySelectorAll("[data-room-mode]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.roomMode === mode);
+  });
+
+  if (visualReadoutLabel) matrixText(visualReadoutLabel, `ROOM MODE / ${mode}`, 520);
+  if (visualReadoutTitle) matrixText(visualReadoutTitle, roomModes[mode] || "PRESSAUX ROOM", 660);
 }
 
 function createBlocks(data) {
@@ -332,11 +360,10 @@ function resetHome() {
   futureDevice.classList.remove("module-state");
   closePopup({ immediate: true });
   setActiveButtons("");
-  if (leftKicker) matrixText(leftKicker, "TRANROLLINHYFA / TEAM ARRIVAL", 640);
+  setActiveRoomMode("LOBBY");
+  if (leftKicker) matrixText(leftKicker, "TRANROLLINHYFA / ROOM CHECK-IN", 640);
   if (leftTitle) matrixText(leftTitle, "PRESSAUX FUTURE HOTEL", 780);
   setCopy(homeCopy);
-  if (visualReadoutLabel) visualReadoutLabel.textContent = "";
-  if (visualReadoutTitle) visualReadoutTitle.textContent = "";
   if (moduleBlockGrid) moduleBlockGrid.innerHTML = "";
 }
 
@@ -351,8 +378,8 @@ function renderModuleScreen(moduleName) {
   if (leftKicker) matrixText(leftKicker, `${data.readout} / LIVE`, 640);
   if (leftTitle) matrixText(leftTitle, `${data.readout} PROTOCOL`, 780);
   setCopy(data.copy.concat([
-    "Additional PressAux facility blocks are loaded only after interface selection.",
-    "Matrix text transition confirms the active TranrollinHyfa hospitality layer."
+    "Room interface controls remain live while the selected PressAux module updates.",
+    "Matrix transition confirms the active TranrollinHyfa hospitality layer."
   ]));
   if (visualReadoutLabel) matrixText(visualReadoutLabel, `${data.readout} / ACTIVE MODULE`, 640);
   if (visualReadoutTitle) matrixText(visualReadoutTitle, data.readout, 860);
@@ -361,24 +388,8 @@ function renderModuleScreen(moduleName) {
 
 function popupVisual(type) {
   const visuals = {
-    trade: `
-      <svg class="trade-graph" viewBox="0 0 260 150" aria-hidden="true">
-        <polyline points="8,112 34,96 58,104 82,63 108,78 132,42 160,58 190,26 224,44 252,18"></polyline>
-        <g class="graph-bars">
-          <rect x="20" y="106" width="10" height="30"></rect><rect x="54" y="92" width="10" height="44"></rect>
-          <rect x="88" y="70" width="10" height="66"></rect><rect x="122" y="82" width="10" height="54"></rect>
-          <rect x="156" y="52" width="10" height="84"></rect><rect x="190" y="62" width="10" height="74"></rect>
-          <rect x="224" y="38" width="10" height="98"></rect>
-        </g>
-      </svg>`,
-    apartment: `
-      <svg class="apartment-plan" viewBox="0 0 260 180" aria-hidden="true">
-        <path d="M45 74 L82 38 L123 52 L148 84 L190 70 L212 126 L160 142 L122 132 L95 160 L62 130 Z"></path>
-        <path d="M95 76 L132 76 L154 102 L132 128 L96 128 L74 102 Z"></path>
-        <path d="M160 90 L232 112 L216 164 L148 140 Z"></path>
-        <path d="M166 108 L218 124 M158 124 L210 142 M154 138 L202 156"></path>
-        <text x="146" y="36">PX</text>
-      </svg>`,
+    trade: `<svg class="trade-graph" viewBox="0 0 260 150" aria-hidden="true"><polyline points="8,112 34,96 58,104 82,63 108,78 132,42 160,58 190,26 224,44 252,18"></polyline><g class="graph-bars"><rect x="20" y="106" width="10" height="30"></rect><rect x="54" y="92" width="10" height="44"></rect><rect x="88" y="70" width="10" height="66"></rect><rect x="122" y="82" width="10" height="54"></rect><rect x="156" y="52" width="10" height="84"></rect><rect x="190" y="62" width="10" height="74"></rect><rect x="224" y="38" width="10" height="98"></rect></g></svg>`,
+    apartment: `<svg class="apartment-plan" viewBox="0 0 260 180" aria-hidden="true"><path d="M45 74 L82 38 L123 52 L148 84 L190 70 L212 126 L160 142 L122 132 L95 160 L62 130 Z"></path><path d="M95 76 L132 76 L154 102 L132 128 L96 128 L74 102 Z"></path><path d="M160 90 L232 112 L216 164 L148 140 Z"></path><path d="M166 108 L218 124 M158 124 L210 142 M154 138 L202 156"></path><text x="146" y="36">PX</text></svg>`,
     stream: `<div class="code-stream">${Array.from({ length: 10 }, (_, i) => `<span style="--i:${i}">0x${(4417 + i * 37).toString(16)} / STREAM_PACKET_${i}</span>`).join("")}</div>`,
     energy: `<div class="energy-core"><span></span><span></span><span></span><strong>86%</strong></div>`,
     market: `<div class="route-map"><span></span><span></span><span></span><i></i><i></i><i></i><i></i></div>`,
@@ -414,84 +425,39 @@ function renderPopup(moduleName) {
 function openPopup(moduleName) {
   window.clearTimeout(popupCloseFallback);
   renderPopup(moduleName);
-  popup.classList.remove("is-closing", "is-dismissing", "is-dragging");
-  popupCard?.style.removeProperty("--drag-x");
-  popupCard?.style.removeProperty("--drag-opacity");
+  popup.classList.remove("is-closing");
   popup.classList.add("is-open");
   popup.setAttribute("aria-hidden", "false");
 }
 
 function finishPopupClose() {
   window.clearTimeout(popupCloseFallback);
-  if (popupCloseAnimationHandler) {
-    popupCard?.removeEventListener("animationend", popupCloseAnimationHandler);
-    popupCloseAnimationHandler = null;
-  }
-  isDraggingPopup = false;
-  activePopupPointerId = null;
-  popup.classList.remove("is-open", "is-closing", "is-dismissing", "is-dragging", "is-settling");
+  popup.classList.remove("is-open", "is-closing");
   popup.setAttribute("aria-hidden", "true");
-  popupCard?.style.removeProperty("--drag-x");
-  popupCard?.style.removeProperty("--drag-opacity");
 }
 
 function closePopup(options = {}) {
-  const isVisible = popup.classList.contains("is-open");
-  const isClosing = popup.classList.contains("is-closing") || popup.classList.contains("is-dismissing");
-
-  if (!isVisible && !isClosing) return;
-
+  if (!popup.classList.contains("is-open") && !popup.classList.contains("is-closing")) return;
   if (options.immediate) {
     finishPopupClose();
     return;
   }
-
-  window.clearTimeout(popupCloseFallback);
-  isDraggingPopup = false;
-  popup.classList.remove("is-dragging", "is-settling");
-  popup.classList.add(options.direction === "right" ? "is-dismissing" : "is-closing");
+  popup.classList.add("is-closing");
   popup.setAttribute("aria-hidden", "true");
-
-  if (popupCloseAnimationHandler) {
-    popupCard?.removeEventListener("animationend", popupCloseAnimationHandler);
-  }
-
-  popupCloseAnimationHandler = (event) => {
-    if (event.target !== popupCard) return;
-    finishPopupClose();
-  };
-
-  popupCard?.addEventListener("animationend", popupCloseAnimationHandler);
-  popupCloseFallback = window.setTimeout(finishPopupClose, 720);
-}
-
-function dismissPopupToRight() {
-  closePopup({ direction: "right" });
+  popupCloseFallback = window.setTimeout(finishPopupClose, 460);
 }
 
 function selectModule(moduleName) {
   const normalized = normalizeModule(moduleName);
   renderModuleScreen(normalized);
-  openPopup(normalized);
 }
 
-function refreshMiniPopupLayer() {
-  const activeNotice = topMiniPopups?.querySelector(".mini-popup");
-  const hasVisibleNotice = Boolean(activeNotice);
-  const isLargeNotice = Boolean(activeNotice?.classList.contains("is-large"));
-  topMiniPopups?.classList.toggle("is-visible", hasVisibleNotice);
-  topMiniPopups?.classList.toggle("is-compact", hasVisibleNotice && !isLargeNotice);
-  futureDevice?.classList.toggle("has-mini-popup", hasVisibleNotice && isLargeNotice);
-}
-
-function showMiniPopup(message, variant = "large") {
+function showMiniPopup(message) {
   if (!topMiniPopups) return;
 
   topMiniPopups.querySelectorAll(".mini-popup").forEach((popupItem) => popupItem.remove());
-
-  const isLargeNotice = variant === "large";
   const note = document.createElement("article");
-  note.className = `mini-popup ${isLargeNotice ? "is-large" : "is-small"}`;
+  note.className = "mini-popup is-small";
   note.innerHTML = `
     <img class="mini-popup-logo" src="assets/hotel/hotel-logo-primary.png" alt="" aria-hidden="true">
     <div class="mini-popup-copy">
@@ -500,28 +466,27 @@ function showMiniPopup(message, variant = "large") {
     </div>
   `;
   topMiniPopups.prepend(note);
-  refreshMiniPopupLayer();
-  matrixText(note.querySelector("strong"), "PRESSAUX / TRANROLLINHYFA", 420);
+  topMiniPopups.classList.add("is-visible", "is-compact");
+  matrixText(note.querySelector("strong"), "PRESSAUX ROOM", 420);
   matrixText(note.querySelector("span"), message, 680);
 
   window.setTimeout(() => {
     note.classList.add("is-leaving");
     note.addEventListener("animationend", () => {
       note.remove();
-      refreshMiniPopupLayer();
+      topMiniPopups.classList.remove("is-visible", "is-compact");
     }, { once: true });
-  }, 5200);
+  }, 4200);
 }
 
 function scheduleMiniPopups(isInitial = false) {
   window.clearTimeout(miniTimer);
-  const delay = isInitial ? FIRST_NOTICE_DELAY_MS : NOTICE_DELAY_MS;
   miniTimer = window.setTimeout(() => {
-    const variant = (miniIndex + 1) % LARGE_NOTICE_INTERVAL === 0 ? "large" : "small";
-    showMiniPopup(miniMessages[miniIndex % miniMessages.length], variant);
+    const message = Object.values(roomModes)[miniIndex % Object.values(roomModes).length];
+    showMiniPopup(message);
     miniIndex += 1;
     scheduleMiniPopups();
-  }, delay);
+  }, isInitial ? FIRST_NOTICE_DELAY_MS : NOTICE_DELAY_MS);
 }
 
 function handlePointerMove(event) {
@@ -545,52 +510,18 @@ function requestFullscreenOnce() {
   }
 }
 
-function startPopupDrag(event) {
-  if (!popup.classList.contains("is-open") || popup.classList.contains("is-closing") || popup.classList.contains("is-dismissing")) return;
-  isDraggingPopup = true;
-  activePopupPointerId = event.pointerId;
-  swipeStartX = event.clientX;
-  swipeStartY = event.clientY;
-  swipeCurrentX = 0;
-  popup.classList.add("is-dragging");
-  popupCard?.setPointerCapture?.(event.pointerId);
-}
-
-function movePopupDrag(event) {
-  if (!isDraggingPopup || !popupCard || event.pointerId !== activePopupPointerId) return;
-  const deltaX = Math.max(0, event.clientX - swipeStartX);
-  const deltaY = Math.abs(event.clientY - swipeStartY);
-  swipeCurrentX = deltaX;
-  if (deltaX > 4 && deltaX > deltaY * 0.7) event.preventDefault();
-  popupCard.style.setProperty("--drag-x", `${deltaX}px`);
-  popupCard.style.setProperty("--drag-opacity", `${Math.max(0.18, 1 - deltaX / 360)}`);
-}
-
-function endPopupDrag(event) {
-  if (!isDraggingPopup || event.pointerId !== activePopupPointerId) return;
-  popupCard?.releasePointerCapture?.(event.pointerId);
-  isDraggingPopup = false;
-  activePopupPointerId = null;
-  if (swipeCurrentX > 130) {
-    dismissPopupToRight();
-    return;
-  }
-  popup.classList.remove("is-dragging");
-  popup.classList.add("is-settling");
-  popupCard?.style.setProperty("--drag-x", "0px");
-  popupCard?.style.setProperty("--drag-opacity", "1");
-  window.setTimeout(() => {
-    popup.classList.remove("is-settling");
-    popupCard?.style.removeProperty("--drag-x");
-    popupCard?.style.removeProperty("--drag-opacity");
-  }, 260);
-}
-
 function bindEvents() {
   document.addEventListener("pointerdown", requestFullscreenOnce);
 
   document.querySelectorAll("[data-panel]").forEach((button) => {
     button.addEventListener("click", () => selectModule(button.dataset.panel));
+  });
+
+  document.querySelectorAll(".room-action").forEach((button) => {
+    button.addEventListener("click", () => {
+      setActiveRoomMode(button.dataset.roomMode);
+      showMiniPopup(roomModes[button.dataset.roomMode] || "ROOM MODE READY");
+    });
   });
 
   homeButton?.addEventListener("click", resetHome);
@@ -605,11 +536,6 @@ function bindEvents() {
     if (event.target === popup) closePopup();
   });
   popupAction.addEventListener("click", closePopup);
-
-  popupCard?.addEventListener("pointerdown", startPopupDrag);
-  popupCard?.addEventListener("pointermove", movePopupDrag);
-  popupCard?.addEventListener("pointerup", endPopupDrag);
-  popupCard?.addEventListener("pointercancel", endPopupDrag);
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closePopup();
@@ -628,9 +554,10 @@ function openInitialPanelFromUrl() {
   if (requestedPanel) selectModule(requestedPanel);
 }
 
+buildControlMatrix();
+buildSuiteTickets();
 buildTaskList();
 bindEvents();
 resetHome();
 openInitialPanelFromUrl();
 animateParallax();
-scheduleMiniPopups(true);

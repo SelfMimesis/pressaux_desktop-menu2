@@ -273,7 +273,7 @@ function matrixValue(input, finalValue, duration = 720) {
 function buildControlMatrix() {
   if (!controlMatrix) return;
 
-  controlMatrix.innerHTML = matrixCells.slice(0, 18).map(([label, value], index) => `
+  controlMatrix.innerHTML = matrixCells.slice(0, 12).map(([label, value], index) => `
     <button class="control-cell room-action" type="button" data-room-mode="${label === "BELL" ? "RECEPTION" : label === "REST" ? "SLEEP" : label === "STAFF" ? "STAFF" : label === "CART" ? "SERVICE" : label === "LOBBY" ? "LOBBY" : `CELL_${index}`}" style="--delay:${index * 36}ms">
       <span>${label}</span>
       <strong>${value}</strong>

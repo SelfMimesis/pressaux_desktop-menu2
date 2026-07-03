@@ -634,6 +634,22 @@ svg {
   stroke-linecap: round;
 }
 
+.console-rotating-mark {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  z-index: 1;
+  width: clamp(96px, 8.2vw, 165px);
+  aspect-ratio: 1;
+  object-fit: contain;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 0 16px rgba(76, 8, 16, 0.16));
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: 50% 50%;
+  animation: consoleMarkSpin 22s linear infinite;
+}
+
 .console-dial {
   position: absolute;
   left: 50%;
@@ -768,103 +784,6 @@ svg {
   box-shadow: 0 6px 12px rgba(0, 23, 30, 0.32), 0 0 0 4px rgba(51, 231, 255, 0.12), inset 0 0 18px rgba(255, 255, 236, 0.34);
 }
 
-.rim-gear-system {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-  width: clamp(150px, 13vw, 280px);
-  aspect-ratio: 1;
-  transform: translate(calc(-50% + var(--parallax-x) * -0.18), calc(-50% + var(--parallax-y) * -0.18));
-  opacity: 0.28;
-  filter: drop-shadow(0 0 18px rgba(212, 230, 101, 0.18));
-  transition: opacity 520ms ease, filter 520ms ease, transform 520ms ease;
-}
-
-.rim-ring,
-.rim-core,
-.rim-armature,
-.rim-armature span {
-  position: absolute;
-}
-
-.rim-ring {
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(238, 231, 197, 0.42);
-  background:
-    repeating-conic-gradient(from 0deg, rgba(212, 230, 101, 0.36) 0 7deg, transparent 7deg 18deg),
-    radial-gradient(circle, transparent 0 47%, rgba(21, 61, 72, 0.32) 48% 54%, transparent 55%);
-  mask: radial-gradient(circle, transparent 0 45%, #000 46% 58%, transparent 59%);
-  animation: gearRotate 22s linear infinite;
-}
-
-.rim-ring-mid {
-  inset: 16%;
-  border-color: rgba(151, 196, 161, 0.48);
-  animation-duration: 16s;
-  animation-direction: reverse;
-}
-
-.rim-ring-inner {
-  inset: 32%;
-  border-color: rgba(212, 230, 101, 0.48);
-  animation-duration: 9s;
-}
-
-.rim-armature {
-  inset: -18%;
-  border-radius: 50%;
-  animation: gearRotate 34s linear infinite reverse;
-}
-
-.rim-armature span {
-  left: 50%;
-  top: 50%;
-  width: 9px;
-  height: 52%;
-  transform-origin: 50% 0;
-  border: 1px solid rgba(238, 231, 197, 0.22);
-  border-radius: 4px 4px 18px 18px;
-  background: linear-gradient(180deg, rgba(238, 231, 197, 0.26), rgba(21, 61, 72, 0.26));
-  clip-path: polygon(25% 0, 75% 0, 100% 72%, 62% 100%, 38% 100%, 0 72%);
-}
-
-.rim-armature span:nth-child(1) { transform: rotate(0deg) translateY(-4px); height: 64%; }
-.rim-armature span:nth-child(2) { transform: rotate(45deg) translateY(-4px); height: 46%; }
-.rim-armature span:nth-child(3) { transform: rotate(90deg) translateY(-4px); height: 58%; }
-.rim-armature span:nth-child(4) { transform: rotate(135deg) translateY(-4px); height: 43%; }
-.rim-armature span:nth-child(5) { transform: rotate(180deg) translateY(-4px); height: 68%; }
-.rim-armature span:nth-child(6) { transform: rotate(225deg) translateY(-4px); height: 48%; }
-.rim-armature span:nth-child(7) { transform: rotate(270deg) translateY(-4px); height: 61%; }
-.rim-armature span:nth-child(8) { transform: rotate(315deg) translateY(-4px); height: 42%; }
-
-.rim-core {
-  inset: 39%;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 1px solid rgba(238, 231, 197, 0.62);
-  background:
-    radial-gradient(circle at 50% 50%, rgba(238, 231, 197, 0.32), transparent 34%),
-    rgba(21, 61, 72, 0.42);
-  box-shadow: inset 0 0 18px rgba(212, 230, 101, 0.18), 0 0 20px rgba(21, 61, 72, 0.28);
-  animation: coreBreathe 3.8s ease-in-out infinite;
-}
-
-.rim-core span {
-  position: absolute;
-  inset: 50%;
-  width: 70%;
-  height: 1px;
-  background: rgba(238, 231, 197, 0.58);
-  transform-origin: left center;
-}
-
-.rim-core span:nth-child(1) { rotate: 0deg; }
-.rim-core span:nth-child(2) { rotate: 60deg; }
-.rim-core span:nth-child(3) { rotate: 120deg; }
-
 .visual-readout {
   display: none;
 }
@@ -899,10 +818,6 @@ svg {
 
 .home-state .module-block-grid {
   display: none;
-}
-
-.module-state .rim-gear-system {
-  opacity: 0.72;
 }
 
 .module-block {
@@ -1738,13 +1653,9 @@ svg {
   to { transform: translateY(42px); }
 }
 
-@keyframes gearRotate {
-  to { rotate: 360deg; }
-}
-
-@keyframes coreBreathe {
-  0%, 100% { transform: scale(0.96); opacity: 0.72; }
-  50% { transform: scale(1.06); opacity: 1; }
+@keyframes consoleMarkSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes rotateRing {
